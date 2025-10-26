@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request Something</title>
+  <script>
+    async function sendNotification() {
+      const token = "o.DER0fXgCYLXAVXnWMVBi9vj9sXDLtUI1"; // replace this line!
+
+      const message = {
+        type: "note",
+        title: "New Request",
+        body: "Someone requested a Coke!"
+      };
+
+      await fetch("https://api.pushbullet.com/v2/pushes", {
+        method: "POST",
+        headers: {
+          "Access-Token": token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+      });
+
+      alert("Request sent!");
+    }
+  </script>
+</head>
+<body>
+  <h1>Request Page</h1>
+  <button onclick="sendNotification()">Ask for Coke</button>
+</body>
+</html>
